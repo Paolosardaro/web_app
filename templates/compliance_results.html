@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultato Verifica Compliance</title>
+</head>
+<body>
+    <h1>Risultato Verifica Documenti</h1>
+    <p>Qui sono i risultati per la verifica dei documenti del dipendente.</p>
+
+    <h3>Documenti Trovati:</h3>
+    {% if documenti_trovati %}
+        <ul>
+            {% for documento in documenti_trovati %}
+                <li>{{ documento }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nessun documento trovato.</p>
+    {% endif %}
+
+    <h3>Documenti Mancanti:</h3>
+    {% if documenti_mancanti %}
+        <ul>
+            {% for documento in documenti_mancanti %}
+                <li>{{ documento }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tutti i documenti sono presenti.</p>
+    {% endif %}
+
+    <br>
+    <a href="/compliance">Torna alla pagina di verifica</a>
+</body>
+</html>

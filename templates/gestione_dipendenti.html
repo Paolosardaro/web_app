@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Dipendenti</title>
+</head>
+<body>
+    <h1>Gestione Dipendenti</h1>
+
+    <!-- Form per caricare file Excel -->
+    <form action="/importa_dipendenti" method="post" enctype="multipart/form-data">
+        <label for="file">Carica File Excel:</label>
+        <input type="file" id="file" name="file" accept=".xlsx, .xls" required>
+        <button type="submit">Carica Dati</button>
+    </form>
+
+    <!-- Form per la ricerca -->
+    <form action="/cerca_dipendenti" method="post">
+        <input type="text" name="query" placeholder="Cerca dipendente...">
+        <button type="submit">Cerca</button>
+    </form>
+
+    {% if dipendenti %}
+    <h2>Dipendenti:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Ruolo</th>
+                <th>Stato</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dip in dipendenti %}
+            <tr>
+                <td>{{ dip[1] }}</td>  <!-- Nome -->
+                <td>{{ dip[2] }}</td>  <!-- Cognome -->
+                <td>{{ dip[3] }}</td>  <!-- Ruolo -->
+                <td>{{ dip[4] }}</td>  <!-- Stato -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nessun dipendente disponibile.</p>
+    {% endif %}
+</body>
+</html>

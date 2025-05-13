@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Trasferte</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestione Trasferte</h1>
+
+        <label for="search">Cerca Trasferte:</label>
+        <input type="text" id="search" name="search">
+
+        <button onclick="ricercaTrasferte()">Ricerca</button>
+
+        <button onclick="importaDati()">Importa Dati Excel</button>
+
+        <button onclick="aggiungiRecord()">Aggiungi Record</button>
+    </div>
+
+    <script>
+        function ricercaTrasferte() {
+            const query = document.getElementById("search").value;
+            if (query) {
+                alert("Ricerca trasferte con query: " + query);
+            } else {
+                alert("Inserisci un termine di ricerca.");
+            }
+        }
+
+        function importaDati() {
+            alert("Importa dati da file Excel.");
+        }
+
+        function aggiungiRecord() {
+            alert("Aggiungi record manualmente.");
+        }
+    </script>
+</body>
+</html>

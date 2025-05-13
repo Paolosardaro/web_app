@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Trasferte</title>
+</head>
+<body>
+    <h1>Gestione Trasferte</h1>
+
+    <a href="/aggiungi_trasferta">Aggiungi una nuova trasferta</a>
+
+    <h2>Trasferte Esistenti</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome Dipendente</th>
+                <th>Data Inizio</th>
+                <th>Data Fine</th>
+                <th>Inquadramento</th>
+                <th>Costo Orario</th>
+                <th>Link Fatture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trasferta in trasferte %}
+            <tr>
+                <td>{{ trasferta[0] }}</td>
+                <td>{{ trasferta[1] }}</td>
+                <td>{{ trasferta[2] }}</td>
+                <td>{{ trasferta[3] }}</td>
+                <td>{{ trasferta[4] }}</td>
+                <td>{{ trasferta[5] }}</td>
+                <td><a href="/gestione_fatture/{{ trasferta[0] }}">Gestisci Fatture</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi Dati</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Analisi Dati</h1>
+        <label for="dipendente">Nome Dipendente:</label>
+        <input type="text" id="dipendente" name="dipendente">
+
+        <label for="inquadramento">Inquadramento:</label>
+        <select id="inquadramento">
+            <option value="quadro">Quadro</option>
+            <option value="dirigente">Dirigente</option>
+            <option value="impiegato">Impiegato</option>
+        </select>
+
+        <label for="valore">Valore Monetario:</label>
+        <input type="text" id="valore" name="valore">
+
+        <button onclick="generaAnalisi()">Genera Grafico e Tabella</button>
+
+        <div id="graficoTabella"></div>
+    </div>
+
+    <script>
+        function generaAnalisi() {
+            const dipendente = document.getElementById("dipendente").value;
+            const inquadramento = document.getElementById("inquadramento").value;
+            const valore = document.getElementById("valore").value;
+
+            if (!dipendente || !inquadramento || !valore) {
+                alert("Per favore, compila tutti i campi.");
+                return;
+            }
+
+            // Logica per l'analisi dei dati, in caso di utilizzo di un server backend
+            alert("Analizzando i dati...");
+            document.getElementById("graficoTabella").innerHTML = "<p>Risultato grafico e tabella per " + dipendente + "</p>";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi Dati con IA</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Puoi aggiungere uno stile CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Analisi Dati con IA</h1>
+        <label for="domanda">Inserisci la domanda per l'analisi dei dati:</label>
+        <input type="text" id="domanda" name="domanda" placeholder="Inserisci la domanda...">
+        
+        <button onclick="cerca()">Cerca</button>
+        
+        <button onclick="caricaDocumento()">Carica Documento</button>
+        
+        <div id="risultato"></div>
+    </div>
+
+    <script>
+        function cerca() {
+            const domanda = document.getElementById("domanda").value;
+            if (domanda) {
+                // Invia una richiesta al backend per l'analisi dei dati
+                alert("Analizzando la domanda: " + domanda);
+                document.getElementById("risultato").innerHTML = "Risultato analisi per: " + domanda;
+            } else {
+                alert("Inserisci una domanda valida!");
+            }
+        }
+
+        function caricaDocumento() {
+            alert("Funzione per caricare il documento.");
+        }
+    </script>
+</body>
+</html>

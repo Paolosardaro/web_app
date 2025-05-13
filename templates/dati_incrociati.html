@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Dati Incrociati - Analisi Trasferte</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        canvas {
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dati Incrociati - Analisi Costi Trasferte</h1>
+
+    <h2>Tabella riepilogativa</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome Dipendente</th>
+                <th>Inquadramento</th>
+                <th>Costo Totale (€)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for riga in dati %}
+            <tr>
+                <td>{{ riga[0] }}</td>
+                <td>{{ riga[1] }}</td>
+                <td>{{ "%.2f"|format(riga[2]) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Grafico costi per dipendente</h2>
+    <canvas id="graficoCosti"></canvas>
+
+    <script>
+        const ctx = document.getElementById('graficoCosti').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels | tojson }},
+                datasets: [{
+                    label: 'Costo Totale (€)',
+                    data: {{ costi | tojson }},
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Costo Totale delle Trasferte per Dipendente'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '€' + value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
