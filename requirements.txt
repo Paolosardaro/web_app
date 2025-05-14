@@ -9,3 +9,9 @@ certifi==2025.4.26
 charset-normalizer==3.4.2
 idna==3.10
 packaging==25.0
+
+# Moduli mancanti ma necessari
+itsdangerous==2.1.2          # Per SessionMiddleware
+python-multipart==0.0.9      # Per gestire form e upload file
+aiofiles==23.2.1             # Per gestione file async
+openpyxl==3.1.2              # Se importi file Excel in pandas
